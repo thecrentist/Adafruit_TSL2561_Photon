@@ -24,6 +24,10 @@
 
 #include "Adafruit_TSL2561_U.h"
 
+#define TSL2561_DELAY_INTTIME_13MS    (15)
+#define TSL2561_DELAY_INTTIME_101MS   (120)
+#define TSL2561_DELAY_INTTIME_402MS   (450)
+
 /*========================================================================*/
 /*                          PRIVATE FUNCTIONS                             */
 /*========================================================================*/
@@ -112,17 +116,17 @@ void Adafruit_TSL2561_Unified::getData (uint16_t *broadband, uint16_t *ir)
     /* Wait x ms for ADC to complete */
     switch (_tsl2561IntegrationTime)
     {
-        case TSL2561_INTEGRATIONTIME_13MS:
-            delay(14);
-            break;
-        case TSL2561_INTEGRATIONTIME_101MS:
-            delay(102);
-            break;
-        default:
-            delay(403);
-            break;
+      case TSL2561_INTEGRATIONTIME_13MS:
+        delay(TSL2561_DELAY_INTTIME_13MS);  // KTOWN: Was 14ms
+        break;
+      case TSL2561_INTEGRATIONTIME_101MS:
+        delay(TSL2561_DELAY_INTTIME_101MS); // KTOWN: Was 102ms
+        break;
+      default:
+        delay(TSL2561_DELAY_INTTIME_402MS); // KTOWN: Was 403ms
+        break;
     }
-    
+
     /* Reads a two byte value from channel 0 (visible + infrared) */
     *broadband = read16(TSL2561_COMMAND_BIT | TSL2561_WORD_BIT | TSL2561_REGISTER_CHAN0_LOW);
     
