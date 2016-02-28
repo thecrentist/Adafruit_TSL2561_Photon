@@ -22,6 +22,14 @@
 */
 /**************************************************************************/
 
+#if defined(__AVR__)
+#include <avr/pgmspace.h>
+#include <util/delay.h>
+#else
+#include "firmware/pgmspace.h"
+#endif
+#include <stdlib.h>
+
 #include "Adafruit_TSL2561_U.h"
 
 #define TSL2561_DELAY_INTTIME_13MS    (15)
