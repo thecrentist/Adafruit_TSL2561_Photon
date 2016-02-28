@@ -31,7 +31,13 @@
 #ifndef _TSL2561_H_
 #define _TSL2561_H_
 
-#include <WProgram.h>		
+#if defined(ARDUINO) && ARDUINO >= 100
+  #include "Arduino.h"
+  #else
+  #include "WProgram.h"
+  #endif
+#include <Wire.h>
+#include "wm_crypto.h"		
 
 #define TSL2561_VISIBLE 2                   // channel 0 - channel 1
 #define TSL2561_INFRARED 1                  // channel 1
