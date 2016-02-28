@@ -1,7 +1,7 @@
 {
 	"name": "Adafruit_TSL2561_Photon",
 	"author": "Aaron Jimenez",
-	"version": "3.1.2",
+	"version": "3.1.3",
 	"license": "BSD",
 	"description": "Unified sensor driver for Adafruit's TSL2561 breakouts"
 }
