@@ -2,10 +2,14 @@
 /*! 
     @file     Adafruit_TSL2561.h
     @author   K. Townsend (Adafruit Industries)
+    
     @section LICENSE
+    
     Software License Agreement (BSD License)
+    
     Copyright (c) 2013, Adafruit Industries
     All rights reserved.
+    
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions are met:
     1. Redistributions of source code must retain the above copyright
@@ -16,6 +20,7 @@
     3. Neither the name of the copyright holders nor the
     names of its contributors may be used to endorse or promote products
     derived from this software without specific prior written permission.
+    
     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS ''AS IS'' AND ANY
     EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
     WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -31,13 +36,20 @@
 #ifndef _TSL2561_H_
 #define _TSL2561_H_
 
-#if defined(ARDUINO) && ARDUINO >= 100
-  #include "Arduino.h"
-  #else
-  #include "WProgram.h"
-  #endif
-#include <Wire.h>
-#include "wm_crypto.h"		
+#if ARDUINO >= 100
+ #include <Arduino.h>
+#else
+ #include <WProgram.h>
+#endif
+#include <Adafruit_Sensor.h>
+
+#ifdef __AVR_ATtiny85__
+  #include "TinyWireM.h"
+  #define Wire TinyWireM
+#else
+  #include <Wire.h>
+#endif		
+
 
 #define TSL2561_VISIBLE 2                   // channel 0 - channel 1
 #define TSL2561_INFRARED 1                  // channel 1
