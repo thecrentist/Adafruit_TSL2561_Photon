@@ -36,11 +36,16 @@
 #ifndef _TSL2561_H_
 #define _TSL2561_H_
 
-#if ARDUINO >= 100
- #include <Arduino.h>
+#if defined (SPARK)
+    #include "application.h"
 #else
- #include <WProgram.h>
+    #if ((ARDUINO >= 100)
+        #include "Arduino.h"
+    #else
+        #include "WProgram.h"
+    #endif
 #endif
+
 #include <Adafruit_Sensor.h>
 
 #ifdef __AVR_ATtiny85__
